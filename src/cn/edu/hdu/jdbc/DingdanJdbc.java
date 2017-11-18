@@ -2,6 +2,7 @@ package cn.edu.hdu.jdbc;
 
 import cn.edu.hdu.dao.Dingdan;
 import cn.edu.hdu.entity.DingdanModel;
+import cn.edu.hdu.utils.JdbcUtil;
 import com.alibaba.fastjson.JSON;
 
 import java.sql.*;
@@ -121,18 +122,8 @@ public class DingdanJdbc {
     public int receiveOrder(int receiverId, long orderId) {
         String sql = "update dingdan set receiverId = " + receiverId
                 + ",status = 1 where orderId = " + orderId;
-        try {
-            conn = MySqlConn.getConnection();
-            psmt = conn.prepareStatement(sql);
-            if (!psmt.execute()) {
-                return 1;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            MySqlConn.release(conn, psmt, resultSet);
-        }
-        return 0;
+        JdbcUtil jdbcUtil = new JdbcUtil();
+        return jdbcUtil.JdbcMethod(sql);
     }
 
     private void myMethod(String sql) {

@@ -1,6 +1,7 @@
 package cn.edu.hdu.jdbc;
 
 import cn.edu.hdu.dao.User;
+import cn.edu.hdu.utils.JdbcUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -47,17 +48,8 @@ public class UserJdbc {
     public int updateUser(int userId, String motto, int sex, String address, long phone) throws SQLException {
         String sql = "update user set motto = '" + motto + "',sex = " + sex
                 + ",address = '" + address + "',phone = " + phone + " where userId = " + userId;
-        try {
-            psmt = (PreparedStatement) MySqlConn.connection.createStatement();
-            if (!psmt.execute(sql)) {
-                return 1;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            MySqlConn.release(conn, psmt, resultSet);
-        }
-        return 0;
+        JdbcUtil jdbcUtil = new JdbcUtil();
+        return jdbcUtil.JdbcMethod(sql);
     }
 
     private void showUserMethod(User user, String sql) throws SQLException {
