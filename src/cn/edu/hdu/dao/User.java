@@ -7,7 +7,7 @@ public class User {
     private String pw;
     private String motto;
     private int sex;
-    private String headPic;
+    private byte[] headPic;
     private int support;
     private String address;
     private String createtime;
@@ -58,11 +58,11 @@ public class User {
         this.sex = sex;
     }
 
-    public String getHeadPic() {
+    public byte[] getHeadPic() {
         return headPic;
     }
 
-    public void setHeadPic(String headPic) {
+    public void setHeadPic(byte[] headPic) {
         this.headPic = headPic;
     }
 

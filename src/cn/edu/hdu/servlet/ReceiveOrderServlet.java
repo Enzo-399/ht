@@ -25,7 +25,7 @@ public class ReceiveOrderServlet extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         request.setCharacterEncoding("utf-8");
         PrintWriter out = response.getWriter();
-        int userId = (int) request.getSession().getAttribute("userId");
+        int userId =  Integer.parseInt(request.getParameter("userId"));
         DingdanJdbc jdbc = new DingdanJdbc();
         InfoModel infoModel = new InfoModel();
         if (request.getParameter("orderId") != null) {

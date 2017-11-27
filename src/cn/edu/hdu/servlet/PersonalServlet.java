@@ -20,7 +20,7 @@ public class PersonalServlet extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         request.setCharacterEncoding("utf-8");
         PrintWriter out = response.getWriter();
-        int userId = (int) request.getSession().getAttribute("userId");
+        int userId =  Integer.parseInt(request.getParameter("userId"));
         String motto = request.getParameter("motto");
         int sex = Integer.parseInt(request.getParameter("sex"));
         String address = request.getParameter("address");

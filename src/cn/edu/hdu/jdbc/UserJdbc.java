@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
 
 public class UserJdbc {
 
@@ -48,6 +49,12 @@ public class UserJdbc {
     public int updateUser(int userId, String motto, int sex, String address, long phone) throws SQLException {
         String sql = "update user set motto = '" + motto + "',sex = " + sex
                 + ",address = '" + address + "',phone = " + phone + " where userId = " + userId;
+        JdbcUtil jdbcUtil = new JdbcUtil();
+        return jdbcUtil.JdbcMethod(sql);
+    }
+
+    public int updateUser(int userId, byte[] headPic){
+        String sql = "update user set headPic = '" + Arrays.toString(headPic) + "'where userId = " + userId;
         JdbcUtil jdbcUtil = new JdbcUtil();
         return jdbcUtil.JdbcMethod(sql);
     }

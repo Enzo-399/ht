@@ -37,7 +37,7 @@ public class AddOrderServlet extends HttpServlet {
         int time = Integer.parseInt(request.getParameter("time"));
         String remark = request.getParameter("remark");
         int value = Integer.parseInt(request.getParameter("value"));
-        int userId = (int) request.getSession().getAttribute("userId");
+        int userId =  Integer.parseInt(request.getParameter("userId"));
         int urgency = Integer.parseInt(request.getParameter("urgency"));
         int price = Integer.parseInt(request.getParameter("price"));
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");

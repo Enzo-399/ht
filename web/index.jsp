@@ -29,6 +29,7 @@
   <a href="/UnFinisherOrdersServlet">所有未完成订单</a>
     <br>
     <form action="/AddOrderServlet" method="post">
+        userId:<input type="number" name="userId">
         code:<input type="number" name="code">
         phone:<input type="tel" name="phone">
         location:<input type="text" name="location">
@@ -41,16 +42,19 @@
     </form>
 <br>
   <form action="/DeleteOrderServlet" method="get">
+      userId:<input type="number" name="userId">
       订单号：<input type="number" name="orderId">
       <input type="submit" value="删除订单">
   </form>
 
     <form action="/ReceiveOrderServlet" method="post">
+        userId:<input type="number" name="userId">
         订单号：<input type="number" name="orderId">
         <input type="submit" value="接受订单">
     </form>
 
     <form action="/PersonalServlet" method="post">
+        userId:<input type="number" name="userId">
         个性签名<input type="text" name="motto">
         性别：<input type="number" name="sex">
         地址：<input type="text" name="address">
@@ -59,10 +63,15 @@
     </form>
 
     <form action="/CommentServlet" method="post">
+        userId:<input type="number" name="userId">
         orderId:<input type="number" name="orderId">
         comment:<input type="text" name="comment">
         <input type="submit" value="评价">
     </form>
+
+
+
+  <a href="upload.jsp" >132</a>
 
   </body>
 </html>

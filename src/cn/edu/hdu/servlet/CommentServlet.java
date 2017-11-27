@@ -24,7 +24,7 @@ public class CommentServlet extends HttpServlet {
         CommentJdbc commentJdbc = new CommentJdbc();
         CommentModel commentModel = new CommentModel();
         String comment = request.getParameter("comment");
-        int userId = (int) request.getSession().getAttribute("userId");
+        int userId =  Integer.parseInt(request.getParameter("userId"));
         long orderId = Long.parseLong(request.getParameter("orderId"));
         int receiverId = commentJdbc.selectReceiverId(orderId);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
