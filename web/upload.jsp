@@ -11,8 +11,8 @@
     <title>Title</title>
 </head>
 <body>
-<form action="/HeadPicServlet" method="post">
-    userId:<input type="number" name="userId">
+<form action="/UploadPicServlet" method="post" enctype="multipart/form-data" >
+    userId:<input type="number" name="userId"><br>
     选择文件： <input type="file" name="img.png" id="file"><br>
     点击上传： <input type="submit" value="Click Me" ><br>
 </form>

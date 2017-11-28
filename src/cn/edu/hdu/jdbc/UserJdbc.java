@@ -7,7 +7,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Arrays;
 
 public class UserJdbc {
 
@@ -53,8 +52,8 @@ public class UserJdbc {
         return jdbcUtil.JdbcMethod(sql);
     }
 
-    public int updateUser(int userId, byte[] headPic){
-        String sql = "update user set headPic = '" + Arrays.toString(headPic) + "'where userId = " + userId;
+    public int updateUser(int userId, String headPic){
+        String sql = "update user set headPic = '" + headPic + "'where userId = " + userId;
         JdbcUtil jdbcUtil = new JdbcUtil();
         return jdbcUtil.JdbcMethod(sql);
     }
@@ -74,6 +73,7 @@ public class UserJdbc {
                 user.setSupport(resultSet.getInt("support"));
                 user.setAddress(resultSet.getString("address"));
                 user.setCreatetime(resultSet.getString("createtime"));
+                user.setHeadPic(resultSet.getString("headPic"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

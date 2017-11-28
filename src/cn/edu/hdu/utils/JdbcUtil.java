@@ -9,10 +9,11 @@ import java.sql.SQLException;
 
 /**
  * @Author: Enzo
- * @Description: 两个jdbc都要用到的方法
+ * @Description: jdbc都要用到的方法
  * @Date: Create in 14:49 2017/11/18
  * @Params:
  * @Modified by:
+ * 返回1执行成功 返回0执行失败
  */
 public class JdbcUtil {
 
