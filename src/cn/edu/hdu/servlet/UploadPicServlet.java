@@ -32,13 +32,15 @@ public class UploadPicServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         PrintWriter out = response.getWriter();
         JSONObject jsonObject = new JSONObject();
-        // 设置文件项目工厂对象
         String message = "";
         String filePath = null;
         int userId = 0;
         try {
+            // 设置文件项目工厂对象
             DiskFileItemFactory dff = new DiskFileItemFactory();
+            // 用工厂实例化上传组件, ServletFileUpload 用来解析文件上传请求
             ServletFileUpload sfu = new ServletFileUpload(dff);
+            // 解析结果放在 items 中
             List<FileItem> items = sfu.parseRequest(request);
             for (FileItem item : items) {
                 if (item.isFormField()) {
@@ -48,6 +50,7 @@ public class UploadPicServlet extends HttpServlet {
                     // 更改文件名为唯一的
                     String filename = item.getName();
                     if (filename != null) {
+                        // FilenameUtils.getExtension() 函数获取文件的后缀名 (不包括 ".")
                         filename = generateGUID() + "." + FilenameUtils.getExtension(filename);
                     }
                     // 生成存储路径
@@ -62,8 +65,7 @@ public class UploadPicServlet extends HttpServlet {
                         if (filename != null) {
                             item.write(new File(storeDirectory + path, filename));
                         }
-                        filePath = request.getSession().getServletContext().getRealPath("/")
-                                + "/files/images" + path + "/" + filename;
+                        filePath = "/files/images" + path + "/" + filename;
                         message = filePath;
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -79,14 +81,13 @@ public class UploadPicServlet extends HttpServlet {
             jsonObject.put("status", "false");
             jsonObject.put("url", "null");
         } finally {
-            if (!"上传图片失败".equals(message)) {
-                message = message.replace("\\", "/");
-                message = message.replace("//", "/");
-                UserJdbc userJdbc = new UserJdbc();
-                userJdbc.updateUser(userId, message);
-                jsonObject.put("status", "success");
-                jsonObject.put("url", message);
-            }
+            message = message.replace("\\", "/");
+            message = message.replace("//", "/");
+            UserJdbc userJdbc = new UserJdbc();
+            userJdbc.updateUser(userId, message);
+            // 将 URL 和 status 以 json 格式发送给客户端
+            jsonObject.put("status", "success");
+            jsonObject.put("url", message);
             response.getWriter().write(String.valueOf(jsonObject));
         }
     }
@@ -101,6 +102,9 @@ public class UploadPicServlet extends HttpServlet {
      * @return UUID
      */
     private static String generateGUID() {
+        //随机生成 0到2的numBits次方 -1的随机数
+        //public BigInteger(int numBits, Random rnd)
+        //BigInteger e = new BigInteger(10, new Random());
         return new BigInteger(165, new Random()).toString(36).toUpperCase();
     }
 
