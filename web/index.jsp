@@ -38,6 +38,7 @@
         value:<input type="number" name="value">
         urgency:<input type="number" name="urgency">
         price:<input type="number" name="price">
+        receive_location:<input type="number" name="receive_location">
         <input type="submit" value="下订单">
     </form>
 <br>

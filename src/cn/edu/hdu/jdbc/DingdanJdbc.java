@@ -45,6 +45,7 @@ public class DingdanJdbc {
                 dingdan.setUrgency(resultSet.getInt("urgency"));
                 dingdan.setStatus(resultSet.getInt("status"));
                 dingdan.setPrice(resultSet.getInt("price"));
+                dingdan.setReceive_location(resultSet.getInt("receive_location"));
                 dingdan.setOrderCreatetime(resultSet.getString("orderCreatetime"));
             }
         } catch (SQLException e) {
@@ -71,7 +72,7 @@ public class DingdanJdbc {
     public DingdanModel addOrder(int userId, long orderId, int code,
                                  long phone, String location, int time,
                                  String remark, int value, int urgency,
-                                 String orderCreatetime, int price) {
+                                 String orderCreatetime, int price, int receive_location) {
         /**
          * @Author: Enzo
          * @Description: addOneOrder
@@ -80,7 +81,7 @@ public class DingdanJdbc {
          * @Modified By:
          */
         String sql = "insert into dingdan (userId, orderId, code, phone, location," +
-                "time, remark, value, urgency, orderCreatetime, price ) values (?,?,?,?,?,?,?,?,?,?,?) ";
+                "time, remark, value, urgency, orderCreatetime, price, receive_location) values (?,?,?,?,?,?,?,?,?,?,?,?) ";
         try {
             conn = MySqlConn.getConnection();
             psmt = conn.prepareStatement(sql);
@@ -95,6 +96,7 @@ public class DingdanJdbc {
             psmt.setInt(9, urgency);
             psmt.setString(10, orderCreatetime);
             psmt.setInt(11, price);
+            psmt.setInt(12,receive_location);
             psmt.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -144,6 +146,8 @@ public class DingdanJdbc {
                 dingdan.setUrgency(resultSet.getInt("urgency"));
                 dingdan.setStatus(resultSet.getInt("status"));
                 dingdan.setPrice(resultSet.getInt("price"));
+                dingdan.setReceive_location(resultSet.getInt("receive_location"));
+                dingdan.setOrderCreatetime(resultSet.getString("orderCreatetime"));
                 String jsonString = JSON.toJSONString(dingdan);
                 dingdanList.add(jsonString);
             }

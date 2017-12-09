@@ -40,10 +40,11 @@ public class AddOrderServlet extends HttpServlet {
         int userId =  Integer.parseInt(request.getParameter("userId"));
         int urgency = Integer.parseInt(request.getParameter("urgency"));
         int price = Integer.parseInt(request.getParameter("price"));
+        int receive_location = Integer.parseInt(request.getParameter("receive_location"));
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String orderCreatetime = simpleDateFormat.format(new Date());
         DingdanJdbc dingdanJdbc = new DingdanJdbc();
-        dingdanJdbc.addOrder(userId, orderId, code, phone, location, time, remark, value, urgency, orderCreatetime, price);
+        dingdanJdbc.addOrder(userId, orderId, code, phone, location, time, remark, value, urgency, orderCreatetime, price,receive_location);
         out.println(dingdanJdbc.showAllUnFinishedOrders());
         out.flush();
         out.close();

@@ -13,6 +13,15 @@ public class Dingdan {
     private int urgency;
     private int status;
     private int price;
+    private int receive_location;
+
+    public int getReceive_location() {
+        return receive_location;
+    }
+
+    public void setReceive_location(int receive_location) {
+        this.receive_location = receive_location;
+    }
 
     public int getPrice() {
         return price;
