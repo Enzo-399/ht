@@ -138,6 +138,7 @@ public class DingdanJdbc {
             while (resultSet.next()) {
                 dingdan.setUserId(resultSet.getInt("userId"));
                 dingdan.setCode(resultSet.getInt("code"));
+                dingdan.setOrderId(resultSet.getLong("orderId"));
                 dingdan.setPhone(resultSet.getLong("phone"));
                 dingdan.setLocation(resultSet.getString("location"));
                 dingdan.setTime(resultSet.getInt("time"));
