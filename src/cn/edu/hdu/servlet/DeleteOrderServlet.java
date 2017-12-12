@@ -25,7 +25,7 @@ public class DeleteOrderServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         int userId =  Integer.parseInt(request.getParameter("userId"));
         long orderId = Long.parseLong((request.getParameter("orderId")));
-        DingdanJdbc dingdanJdbc=new DingdanJdbc();
+        DingdanJdbc dingdanJdbc = new DingdanJdbc();
         dingdanJdbc.deleteOrder(userId, orderId);
         out.println(dingdanJdbc.showAllOrders());
         out.flush();

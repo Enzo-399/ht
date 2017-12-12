@@ -109,15 +109,7 @@ public class DingdanJdbc {
     public DingdanModel deleteOrder(int userId, long orderId) {
         String sql = "delete from dingdan " +
                 "where userId = " + userId + " and orderId = " + orderId;
-        try {
-            conn = MySqlConn.getConnection();
-            psmt = conn.prepareStatement(sql);
-            psmt.execute();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            MySqlConn.release(conn, psmt, resultSet);
-        }
+        sqlMethod(sql);
         return dingdanModel;
     }
 
@@ -127,6 +119,31 @@ public class DingdanJdbc {
         JdbcUtil jdbcUtil = new JdbcUtil();
         return jdbcUtil.JdbcMethod(sql);
     }
+
+    public DingdanModel valueSortOrder(){
+        String sql = "select * from dingdan order by value";
+        myMethod(sql);
+        return dingdanModel;
+    }
+
+    public DingdanModel urgencySortOrder(){
+        String sql = "select * from dingdan order by urgency";
+        myMethod(sql);
+        return dingdanModel;
+    }
+
+    private void sqlMethod(String sql) {
+        try {
+            conn = MySqlConn.getConnection();
+            psmt = conn.prepareStatement(sql);
+            psmt.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            MySqlConn.release(conn, psmt, resultSet);
+        }
+    }
+
 
     private void myMethod(String sql) {
         try {

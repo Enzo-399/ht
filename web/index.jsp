@@ -70,9 +70,18 @@
         <input type="submit" value="评价">
     </form>
 
-
-
   <a href="upload.jsp" >132</a>
+
+  <form action="/LocationServlet" method="post">
+      userId:<input type="number" name="userId">
+      lon:<input type="text" name="lon">
+      lat:<input type="text" name="lat">
+      <input type="submit" value="经纬度">
+  </form>
+
+    <a href="/ValueSortServlet">根据价值排序</a><br>
+
+    <a href="/UrgencySortServlet">根据紧急程度排序</a><br>
 
   </body>
 </html>
