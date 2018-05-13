@@ -83,5 +83,11 @@
 
     <a href="/UrgencySortServlet">根据紧急程度排序</a><br>
 
+    <form action="/DistanceServlet" method="post">
+        lng:<input type="text" name="lng">
+        lat:<input type="text" name="lat">
+        <input type="submit" value="算距离">
+    </form>
+
   </body>
 </html>

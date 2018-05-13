@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
         String name = request.getParameter("name");
         String pw = request.getParameter("pw");
         String sql = "select * from user where name='" + name + "'";
-        String str = null;
+        String str;
         Statement stmt = null;
         Connection conn = null;
         ResultSet rs = null;
@@ -52,6 +52,13 @@ public class LoginServlet extends HttpServlet {
                             loginModel.setData("");
                         }
                     }
+                }
+                str = loginModel.toString();
+            } else {
+                LoginModel loginModel = new LoginModel();
+                loginModel.setStatus("false");
+                if (loginModel.getStatus().equals("false")) {
+                    loginModel.setData("");
                 }
                 str = loginModel.toString();
             }
