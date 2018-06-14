@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="mahout-mr-0.13.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/web/WEB-INF/lib/mahout-mr-0.13.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
